@@ -75,6 +75,10 @@ const Navbar = () => {
             LOCATIONS
             <span className="absolute -bottom-2 left-0 w-0 h-px bg-red-600 transition-all duration-300 group-hover:w-full" />
           </a>
+          <a href="#company" className="hover:text-red-600 transition-colors relative group">
+            COMPANY
+            <span className="absolute -bottom-2 left-0 w-0 h-px bg-red-600 transition-all duration-300 group-hover:w-full" />
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -97,6 +101,7 @@ const Navbar = () => {
         <a href="#signature" className="text-3xl font-serif text-stone-900 hover:text-red-600 transition-colors" onClick={() => setIsOpen(false)}>Signature</a>
         <a href="#menu" className="text-3xl font-serif text-stone-900 hover:text-red-600 transition-colors" onClick={() => setIsOpen(false)}>Menu</a>
         <a href="#locations" className="text-3xl font-serif text-stone-900 hover:text-red-600 transition-colors" onClick={() => setIsOpen(false)}>Locations</a>
+        <a href="#company" className="text-3xl font-serif text-stone-900 hover:text-red-600 transition-colors" onClick={() => setIsOpen(false)}>Company</a>
         <div className="absolute bottom-12 text-xs tracking-widest text-stone-400">TOKYO ・ EST 2024</div>
       </motion.div>
     </nav>
@@ -419,6 +424,38 @@ const InfoSection = () => {
   );
 };
 
+const CompanyProfile = () => {
+  const details = [
+    { label: "商号", value: "馬氏大阪商務株式会社" },
+    { label: "本社所在地", value: "〒605-0846 京都市東山区五条橋東六丁目5 8 3 番地5 3" },
+    { label: "電話番号", value: "080-6955-7335" },
+    { label: "設立", value: "2025年9月19日" },
+    { label: "資本金", value: "3,000万円" },
+  ];
+
+  return (
+    <section id="company" className="py-24 bg-stone-50 border-t border-stone-200">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <div className="text-center mb-16">
+          <span className="text-red-600 font-bold tracking-widest text-xs uppercase mb-4 block">Corporate</span>
+          <h2 className="text-3xl md:text-4xl font-serif text-stone-900">会社概要</h2>
+        </div>
+
+        <div className="bg-white p-8 md:p-12 shadow-sm border border-stone-100">
+          <div className="flex flex-col gap-6">
+             {details.map((item, index) => (
+              <div key={index} className="flex flex-col md:flex-row md:items-baseline border-b border-stone-100 pb-4 last:border-0 last:pb-0">
+                <span className="w-48 text-xs font-bold text-stone-500 tracking-widest uppercase shrink-0 mb-2 md:mb-0">{item.label}</span>
+                <span className="text-stone-900 font-serif leading-relaxed">{item.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => {
   return (
     <footer className="bg-stone-950 text-stone-500 py-20 border-t border-stone-900">
@@ -488,6 +525,7 @@ export default function App() {
           <SignatureProduct />
           <MenuSection />
           <InfoSection />
+          <CompanyProfile />
           <Footer />
         </motion.div>
       )}
